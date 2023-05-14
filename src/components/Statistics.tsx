@@ -16,7 +16,7 @@ const hexColorRegExp = /^#[0-9A-Fa-f]{6}$/;
 if (!hexColorRegExp.test(fontColorRaw)) {
   throw new Error(`Invalid font color: ${fontColorRaw}`);
 }
-const fontColor: HexColor = fontColorRaw as HexColor;
+const fontColor = fontColorRaw as HexColor;
 
 const Statistics = ({ stats, title }: StatisticsProps) => {
   const listStats = stats.map((stat) => (
