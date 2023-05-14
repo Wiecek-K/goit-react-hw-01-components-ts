@@ -9,6 +9,7 @@
   flex-direction: column;
   border-radius: 5px;
   overflow: hidden;
+  margin: 1rem;
 }
 .title {
   text-align: center;

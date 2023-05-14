@@ -2,17 +2,19 @@
 // import { Section } from "./components/Section";
 // import Counter from "./components/Counter";
 // import List from "./components/List";
+import FriendList from "./components/FriendList";
 import Statistics from "./components/Statistics";
 
 import data from "./data/data.json";
+import friendsJSON from "./data/friends.json";
 // import { useState } from "react";
 function App() {
   // const[count,setCount]=useState<number>(1)
 
   return (
     <>
-      <Statistics stats={data}></Statistics>
-
+      <Statistics title={"Upload Stats"} stats={data}></Statistics>
+      <FriendList array={friendsJSON}></FriendList>
       {/* <Heading title={"Hello"} /> */}
       {/* <Section title={"Diff Title"}>This is my Section</Section> */}
       {/* <Counter setCount={setCount}> */}
