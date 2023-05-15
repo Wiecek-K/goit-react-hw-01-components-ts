@@ -1,12 +1,12 @@
-import css from "../styles/FriendList.module.css";
+import { FC } from "react";
+import type { TPerson } from "../types";
+import css from "./FriendList.module.css";
 
-type Person = { avatar: string; name: string; isOnline: boolean; id: number };
+type TProps = { data: TPerson[] };
 
-type FriendListProps = { array: Person[] };
-
-const FriendList = ({ array }: FriendListProps) => {
-  const friendList = array.map((friend) => (
-    <li className={css.item}>
+export const FriendList: FC<TProps> = ({ data }) => {
+  const friendList = data.map((friend) => (
+    <li className={css.item} key={friend.id}>
       <span className={friend.isOnline ? css.isOnline : css.isOffline}></span>
       <img
         className={css.avatar}
@@ -19,5 +19,3 @@ const FriendList = ({ array }: FriendListProps) => {
   ));
   return <ul className={css.friendList}>{friendList}</ul>;
 };
-
-export default FriendList;

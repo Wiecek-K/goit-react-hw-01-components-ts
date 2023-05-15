@@ -1,20 +1,11 @@
-import css from "../styles/TransactionHistory.module.css";
-type Transaction = {
-  id: string;
-  type: string;
-  amount: string;
-  currency: string;
-};
-type TransactionHistoryProps = { data: Transaction[] };
+import { FC } from "react";
 
-const TransactionHistory = ({ data }: TransactionHistoryProps) => {
-  const transactionsList = data.map((transaction) => (
-    <tr>
-      <td>{transaction.type}</td>
-      <td>{transaction.amount}</td>
-      <td>{transaction.currency}</td>
-    </tr>
-  ));
+import type { TTransaction } from "../types";
+import css from "./TransactionHistory.module.css";
+
+type TProps = { data: TTransaction[] };
+
+export const TransactionHistory: FC<TProps> = ({ data }) => {
   return (
     <table className={css.transactionHistory}>
       <thead>
@@ -24,9 +15,15 @@ const TransactionHistory = ({ data }: TransactionHistoryProps) => {
           <th>Currency</th>
         </tr>
       </thead>
-      <tbody>{transactionsList}</tbody>
+      <tbody>
+        {data.map((transaction) => (
+          <tr key={transaction.id}>
+            <td>{transaction.type}</td>
+            <td>{transaction.amount}</td>
+            <td>{transaction.currency}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
-
-export default TransactionHistory;

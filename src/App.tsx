@@ -1,6 +1,6 @@
-import FriendList from "./components/FriendList";
-import Statistics from "./components/Statistics";
-import TransactionHistory from "./components/TransactionHistory";
+import { FriendList } from "./components/FriendList";
+import { Statistics } from "./components/Statistics";
+import { TransactionHistory } from "./components/TransactionHistory";
 
 import data from "./data/data.json";
 import friendsJSON from "./data/friends.json";
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Statistics title={"Upload Stats"} stats={data}></Statistics>
-      <FriendList array={friendsJSON}></FriendList>
+      <FriendList data={friendsJSON}></FriendList>
       <TransactionHistory data={transactionsJSON}></TransactionHistory>
     </>
   );
