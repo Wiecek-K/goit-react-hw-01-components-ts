@@ -19,4 +19,5 @@ const calculateContrastRatio = (color1: HexColor, color2: HexColor) => {
   const contrast = (light + 0.05) / (dark + 0.05);
   return contrast;
 };
+
 export default calculateContrastRatio;

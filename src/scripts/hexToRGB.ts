@@ -6,4 +6,5 @@ const hexToRGB = (colorValue: HexColor): number[] => {
   const blue = parseInt(colorValue.substring(5, 7), 16);
   return [red, green, blue];
 };
+
 export default hexToRGB;

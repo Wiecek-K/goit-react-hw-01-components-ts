@@ -36,4 +36,5 @@ const Statistics = ({ stats, title }: StatisticsProps) => {
     </section>
   );
 };
+
 export default Statistics;
