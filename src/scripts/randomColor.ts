@@ -1,7 +1,6 @@
 import calculateContrastRatio from "./calculateContrastRatio";
 
 export type HexColor = `#${string}`;
-
 const getRandomHexColor = (): HexColor =>
   `#${Math.random().toString(16).substr(2, 6)}`;
 
@@ -12,4 +11,5 @@ const renderBackgroundColor = (fontColor: HexColor) => {
   }
   return background;
 };
+
 export default renderBackgroundColor;

@@ -2,11 +2,11 @@ import renderBackgroundColor from "../scripts/randomColor";
 import css from "../styles/Statistic.module.css";
 import { HexColor } from "../scripts/randomColor";
 
-type stat = { id: string; label: string; percentage: number };
+type Stat = { id: string; label: string; percentage: number };
 
 type StatisticsProps = {
   title?: string;
-  stats: stat[];
+  stats: Stat[];
 };
 
 const fontColorRaw = getComputedStyle(
@@ -36,4 +36,5 @@ const Statistics = ({ stats, title }: StatisticsProps) => {
     </section>
   );
 };
+
 export default Statistics;

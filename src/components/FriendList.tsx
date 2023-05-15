@@ -1,8 +1,8 @@
 import css from "../styles/FriendList.module.css";
 
-type person = { avatar: string; name: string; isOnline: boolean; id: number };
+type Person = { avatar: string; name: string; isOnline: boolean; id: number };
 
-type FriendListProps = { array: person[] };
+type FriendListProps = { array: Person[] };
 
 const FriendList = ({ array }: FriendListProps) => {
   const friendList = array.map((friend) => (
