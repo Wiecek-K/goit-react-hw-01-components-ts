@@ -1,0 +1,28 @@
+.transactionHistory {
+  margin: 2rem;
+  border: 10px solid #242424;
+  width: 100%;
+  color: black;
+  background-color: whitesmoke;
+
+  border-collapse: collapse;
+}
+.transactionHistory th {
+  background: rgb(217, 12, 213);
+  background: linear-gradient(
+    0deg,
+    rgba(217, 12, 213, 1) 22%,
+    rgba(79, 39, 164, 1) 94%
+  );
+  color: white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+.transactionHistory td {
+  text-align: center;
+  vertical-align: center;
+  border: 2px solid white;
+}
+.transactionHistory tr:nth-child(2n) {
+  background-color: aliceblue;
+}
