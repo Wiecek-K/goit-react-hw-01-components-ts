@@ -1,5 +1,4 @@
-import hexToRGB from "./hexToRGB";
-import type { THexColor } from "../types";
+import { hexToRGB } from "./hexToRGB";
 
 const getRelativeLuminance = (color: number[]): number => {
   const sRGB = color.map((val) => {
@@ -9,7 +8,7 @@ const getRelativeLuminance = (color: number[]): number => {
   return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
 };
 
-const calculateContrastRatio = (color1: THexColor, color2: THexColor) => {
+export const calculateContrastRatio = (color1: string, color2: string) => {
   const color1rgb = hexToRGB(color1);
   const color2rgb = hexToRGB(color2);
   const luminance1 = getRelativeLuminance(color1rgb);
@@ -19,5 +18,3 @@ const calculateContrastRatio = (color1: THexColor, color2: THexColor) => {
   const contrast = (light + 0.05) / (dark + 0.05);
   return contrast;
 };
-
-export default calculateContrastRatio;
