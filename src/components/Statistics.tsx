@@ -1,40 +1,41 @@
-import renderBackgroundColor from "../scripts/randomColor";
-import css from "../styles/Statistic.module.css";
-import { HexColor } from "../scripts/randomColor";
+import { FC } from "react";
 
-type Stat = { id: string; label: string; percentage: number };
+import renderBackgroundColor from "../utils/randomColor";
 
-type StatisticsProps = {
+import type { THexColor, TStat } from "../types";
+import css from "./Statistic.module.css";
+
+type TProps = {
   title?: string;
-  stats: Stat[];
+  stats: TStat[];
 };
 
 const fontColorRaw = getComputedStyle(
   document.documentElement
 ).getPropertyValue("--font-color");
 const hexColorRegExp = /^#[0-9A-Fa-f]{6}$/;
+
 if (!hexColorRegExp.test(fontColorRaw)) {
   throw new Error(`Invalid font color: ${fontColorRaw}`);
 }
-const fontColor = fontColorRaw as HexColor;
+const fontColor = fontColorRaw as THexColor;
 
-const Statistics = ({ stats, title }: StatisticsProps) => {
-  const listStats = stats.map((stat) => (
-    <li
-      className={css.item}
-      style={{ backgroundColor: renderBackgroundColor(fontColor) }}
-      key={stat.id}
-    >
-      <span className={css.label}> {stat.label} </span>
-      <span className={css.percentage}> {stat.percentage} </span>
-    </li>
-  ));
+export const Statistics: FC<TProps> = ({ stats, title }) => {
   return (
     <section className={css.statistics}>
       {title && <h2 className={css.title}>{title}</h2>}
-      <ul className={css.statList}>{listStats}</ul>
+      <ul className={css.statList}>
+        {stats.map((stat) => (
+          <li
+            className={css.item}
+            style={{ backgroundColor: renderBackgroundColor(fontColor) }}
+            key={stat.id}
+          >
+            <span className={css.label}> {stat.label} </span>
+            <span className={css.percentage}> {stat.percentage} </span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };
-
-export default Statistics;
