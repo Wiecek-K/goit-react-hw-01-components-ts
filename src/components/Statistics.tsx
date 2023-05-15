@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import renderBackgroundColor from "../utils/randomColor";
+import { renderBackgroundColor } from "../utils/randomColor";
 
-import type { THexColor, TStat } from "../types";
+import type { TStat } from "../types";
 import css from "./Statistic.module.css";
 
 type TProps = {
@@ -10,15 +10,15 @@ type TProps = {
   stats: TStat[];
 };
 
-const fontColorRaw = getComputedStyle(
-  document.documentElement
-).getPropertyValue("--font-color");
+let fontColorRaw = getComputedStyle(document.documentElement).getPropertyValue(
+  "--font-color"
+);
 const hexColorRegExp = /^#[0-9A-Fa-f]{6}$/;
 
 if (!hexColorRegExp.test(fontColorRaw)) {
+  fontColorRaw = "#eeeeee";
   throw new Error(`Invalid font color: ${fontColorRaw}`);
 }
-const fontColor = fontColorRaw as THexColor;
 
 export const Statistics: FC<TProps> = ({ stats, title }) => {
   return (
@@ -28,7 +28,7 @@ export const Statistics: FC<TProps> = ({ stats, title }) => {
         {stats.map((stat) => (
           <li
             className={css.item}
-            style={{ backgroundColor: renderBackgroundColor(fontColor) }}
+            style={{ backgroundColor: renderBackgroundColor(fontColorRaw) }}
             key={stat.id}
           >
             <span className={css.label}> {stat.label} </span>

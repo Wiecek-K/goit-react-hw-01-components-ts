@@ -1,15 +1,12 @@
-import calculateContrastRatio from "./calculateContrastRatio";
-import type { THexColor } from "../types";
+import { calculateContrastRatio } from "./calculateContrastRatio";
 
-const getRandomHexColor = (): THexColor =>
+const getRandomHexColor = (): string =>
   `#${Math.random().toString(16).substr(2, 6)}`;
 
-const renderBackgroundColor = (fontColor: THexColor) => {
+export const renderBackgroundColor = (fontColor: string) => {
   let background = getRandomHexColor();
   while (calculateContrastRatio(fontColor, background) < 4.5) {
     background = getRandomHexColor();
   }
   return background;
 };
-
-export default renderBackgroundColor;
